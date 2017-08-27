@@ -1,0 +1,33 @@
+Description: Remove unwanted files from release.
+ <long description that can span multiple lines, optional>
+Author: <name and email of author, optional>
+Origin: <upstream|backport|vendor|other>, <URL, required except if Author is present>
+Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>
+Bug-<Vendor>: <URL to the vendor bug report if any, optional>
+Forwarded: <URL|no|not-needed, useless if you have a Bug field, optional>
+Applied-Upstream: <version|URL|commit, identifies patches merged upstream, optional>
+Reviewed-by: <name and email of a reviewer, optional>
+Last-Update: <YYYY-MM-DD, last update of the meta-information, optional>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,7 +47,7 @@
+ 
+ # GATB CORE
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/")
+-find_package(GatbCore 1.3 REQUIRED)
++find_package(gatbcore 1.3.0 REQUIRED)
+ 
+ ################################################################################
+ # TOOLS
+@@ -103,8 +103,6 @@
+ 
+ # We copy some files to the binary archive
+ INSTALL (TARGETS ${PROJECT_NAME} DESTINATION bin)
+-INSTALL (DIRECTORY "${PROJECT_SOURCE_DIR}/data/" DESTINATION "data")
+-INSTALL (FILES LICENSE README scripts/simple_test.sh DESTINATION bin/..)
+ 
+ # We include the "bin" tag into binary archive file name
+ set (CPACK_PACKAGE_FILE_NAME  ${PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-bin-${CMAKE_SYSTEM_NAME})
